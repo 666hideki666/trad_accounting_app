@@ -1,0 +1,466 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1024px; /* iPad landscape width */
+    height: 100vh; /* Use viewport height to ensure full visibility */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+main {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden; /* Allow internal scrolling */
+}
+
+.menu-area {
+    flex: 2;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 1px solid #eee;
+}
+
+.menu-category h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-top: 20px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    cursor: pointer;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.cart-area {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Allow cart to scroll if items exceed height */
+}
+
+.cart-area h2 {
+    margin-top: 0;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+#cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    cursor: pointer;
+}
+
+.cart-summary {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: right;
+}
+
+#checkout-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 10px;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-width: 300px;
+    max-width: 90%; /* Adjusted for sales modal */
+    max-height: 90%; /* Adjusted for sales modal */
+    overflow-y: auto; /* Allow modal to scroll */
+    position: relative;
+}
+
+.modal h3 {
+    margin-top: 0;
+    font-size: 1.8em;
+}
+
+.modal p {
+    font-size: 1.2em;
+}
+
+.modal button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.modal button.close-modal-button {
+    background-color: #6c757d;
+    color: white;
+}
+
+#quantity-modal .quantity-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+#quantity-modal .quantity-control button {
+    font-size: 2em;
+    padding: 5px 15px;
+    background-color: #007bff;
+    color: white;
+}
+
+#quantity-modal #quantity-display {
+    font-size: 2em;
+    margin: 0 20px;
+}
+
+#quantity-modal #confirm-quantity-button {
+    background-color: #28a745;
+    color: white;
+}
+
+#payment-modal #numeric-keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#payment-modal #numeric-keypad button {
+    font-size: 2em;
+    padding: 20px;
+    background-color: #e9ecef;
+    border: 1px solid #ccc;
+}
+
+#payment-modal #numeric-keypad button.zero {
+    grid-column: span 2;
+}
+
+#payment-modal #confirm-payment-button {
+    background-color: #28a745;
+    color: white;
+    width: calc(100% - 20px);
+    margin-top: 20px;
+}
+
+#receipt-modal #check-button {
+    background-color: #007bff;
+    color: white;
+}
+
+#sales-modal .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#sales-modal .calendar-header button {
+    font-size: 1.5em;
+    padding: 5px 10px;
+}
+
+#sales-modal #month-name {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+#sales-modal .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+#sales-modal .calendar-grid div {
+    padding: 10px 5px;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+
+#sales-modal .calendar-grid .day-header {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+#sales-modal .calendar-grid .has-sales {
+    background-color: #d4edda;
+    font-weight: bold;
+}
+
+#daily-sales-view {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure it takes full height of its parent */
+    width: 100%; /* Make it wider */
+    padding-bottom: 20px; /* Add padding to ensure buttons are visible */
+}
+
+#daily-sales-view h4 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+#daily-sales-view ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Allow list to grow and take available space */
+    overflow-y: auto; /* Enable scrolling for the list */
+}
+
+#daily-sales-view li {
+    padding: 5px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+#daily-sales-view textarea {
+    width: calc(100% - 20px);
+    height: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#daily-sales-view #daily-total-input {
+    width: 100px; /* Adjust width as needed */
+    padding: 5px;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+#daily-sales-view #save-total-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.daily-sales-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Allow buttons to wrap if space is limited */
+}
+
+#daily-sales-view #save-memo-button,
+#daily-sales-view #back-to-calendar-button,
+#daily-sales-view #reset-daily-sales-button {
+    background-color: #007bff;
+    color: white;
+    flex-grow: 1;
+    margin: 5px; /* Add some margin between buttons */
+}
+
+#daily-sales-view #reset-daily-sales-button {
+    background-color: #dc3545; /* Red color for reset button */
+}
+
+#confirm-delete-modal button#confirm-delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+#cart-item-modal button {
+    width: calc(100% - 20px);
+    margin: 5px 10px;
+}
+
+#cart-item-modal #edit-quantity-button {
+    background-color: #007bff;
+    color: white;
+}
+
+#cart-item-modal #delete-item-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Customer Check Overlay */
+.customer-check-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95); /* Darker smoke */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    color: white;
+    transform: rotate(180deg);
+    flex-direction: column; /* Arrange content and button vertically */
+}
+
+.customer-check-container {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90%; /* Larger container */
+    max-height: 90%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left; /* Align content to the left */
+}
+
+.customer-check-content {
+    padding: 20px;
+    width: 100%; /* Ensure content takes full width for left alignment */
+}
+
+.customer-check-content h2 {
+    font-size: 2em; /* Adjusted font size */
+    margin-bottom: 15px;
+    text-align: right; /* Align total to the right */
+}
+
+.customer-check-content p {
+    font-size: 1.5em; /* Adjusted font size */
+    margin-bottom: 8px;
+    text-align: right; /* Align paid and change to the right */
+}
+
+.customer-check-content h3 {
+    font-size: 1.3em; /* Adjusted font size */
+    margin-top: 25px;
+    margin-bottom: 8px;
+    text-align: left; /* Align item list title to the left */
+}
+
+.customer-check-content ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1.1em; /* Adjusted font size for item list */
+    text-align: left; /* Align item list to the left */
+}
+
+.customer-check-content li {
+    margin-bottom: 5px;
+}
+
+.customer-check-separator {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.redo-button {
+    position: fixed; /* Change to fixed for screen-relative positioning */
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    z-index: 1002;
+    transform: rotate(180deg); /* Keep the button upright */
+}
+
+/* Utility */
+.hidden {
+    display: none !important;
+}
+
+.back-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 15px 25px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    z-index: 1002;
+}
