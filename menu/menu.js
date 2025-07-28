@@ -17,6 +17,6 @@ const menuData = {
         { name: "クラフトコーラ", price: 400 }
     ],
     "トッピング": [
-        { name: "アイスクリームトッピング", price: 50 }
+        { name: "アイスクリームトッピング", price: 250 }
     ]
 };
