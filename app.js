@@ -437,6 +437,15 @@ function displayDailySales(date) {
     }
 }
 
+saveMemoButton.addEventListener('click', () => {
+    const date = dailyViewDate.textContent;
+    if (salesData[date]) {
+        salesData[date].memo = dailyMemo.value;
+        saveSalesData();
+        alert('メモを保存しました。');
+    }
+});
+
 saveTotalButton.addEventListener('click', () => {
     const date = dailyViewDate.textContent;
     const newTotal = parseInt(dailyTotalInput.value);
