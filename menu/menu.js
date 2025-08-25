@@ -4,13 +4,15 @@ const menuData = {
         { name: "スモークチキンホットサンド", price: 680 }
     ],
     "グラノーラ": [
-        { name: "ベーシックグラノーラ", price: 320 }
+        { name: "ベーシックグラノーラ", price: 320 },
+        { name: "黒蜜きなこグラノーラ", price: 430 }
     ],
     "ワッフル": [
         { name: "プレーン", price: 180 },
         { name: "チョコチップ", price: 250 },
         { name: "シトラス", price: 270 },
         { name: "抹茶ブルーベリー", price: 270 }
+        { name: "抹茶", price: 250 }
     ],
     "名水ソーダ": [
         { name: "ゴールデンキウイ", price: 400 },
