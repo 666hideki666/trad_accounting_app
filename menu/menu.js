@@ -12,7 +12,8 @@
          { name: "チョコチップ", price: 250 },
          { name: "シトラス", price: 270 },
          { name: "抹茶ブルーベリー", price: 270 },
-         { name: "抹茶", price: 250 }
+         { name: "抹茶", price: 250 },
+         { name: "マロン", price: 270 }
      ],
      "名水ソーダ": [
          { name: "ゴールデンキウイ", price: 400 },
